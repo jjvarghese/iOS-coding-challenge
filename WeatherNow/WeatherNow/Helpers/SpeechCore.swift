@@ -6,7 +6,7 @@ class SpeechCore {
     
     private var request: SFSpeechAudioBufferRecognitionRequest?
     private var task: SFSpeechRecognitionTask?
-    private let recognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-AU"))!
+    private let recognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-AU"))! // TODO: Dynamic locale initiation within language boundaries (i.e. all English possibilities)
     let audioEngine = AVAudioEngine()
 
     // MARK: - Public -

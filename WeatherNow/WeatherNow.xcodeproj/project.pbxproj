@@ -19,6 +19,7 @@
 		A4E2612E20A4C84C008B6AD2 /* WeatherDescriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2612D20A4C84C008B6AD2 /* WeatherDescriptions.swift */; };
 		A4E2613020A4C86D008B6AD2 /* WeatherNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2612F20A4C86D008B6AD2 /* WeatherNumbers.swift */; };
 		A4E2613220A4CB99008B6AD2 /* RecognitionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2613120A4CB99008B6AD2 /* RecognitionEngine.swift */; };
+		A4E2613620A4F65D008B6AD2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A4E2613520A4F65D008B6AD2 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		A4E2612D20A4C84C008B6AD2 /* WeatherDescriptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDescriptions.swift; sourceTree = "<group>"; };
 		A4E2612F20A4C86D008B6AD2 /* WeatherNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherNumbers.swift; sourceTree = "<group>"; };
 		A4E2613120A4CB99008B6AD2 /* RecognitionEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognitionEngine.swift; sourceTree = "<group>"; };
+		A4E2613520A4F65D008B6AD2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +54,7 @@
 		A4E2610120A4AA1C008B6AD2 = {
 			isa = PBXGroup;
 			children = (
+				A4E2613520A4F65D008B6AD2 /* README.md */,
 				A4E2610C20A4AA1D008B6AD2 /* WeatherNow */,
 				A4E2610B20A4AA1D008B6AD2 /* Products */,
 			);
@@ -176,6 +179,7 @@
 			files = (
 				A4E2611820A4AA1E008B6AD2 /* LaunchScreen.storyboard in Resources */,
 				A4E2611520A4AA1E008B6AD2 /* Assets.xcassets in Resources */,
+				A4E2613620A4F65D008B6AD2 /* README.md in Resources */,
 				A4E2611320A4AA1D008B6AD2 /* Main.storyboard in Resources */,
 				A4E2612420A4AAD9008B6AD2 /* MainViewController.xib in Resources */,
 			);
