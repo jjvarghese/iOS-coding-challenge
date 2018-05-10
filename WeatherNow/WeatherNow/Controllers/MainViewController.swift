@@ -8,7 +8,9 @@ class MainViewController: UIViewController {
     @IBOutlet weak var resultTextView: UITextView!
     @IBOutlet weak var recordButton: UIButton!
     
-    private var speechCore = SpeechCore()
+    private let speechCore = SpeechCore()
+    private let weatherProvider = WeatherProvider()
+    private let recognitionEngine = RecognitionEngine()
     
     // MARK: - UIViewController -
     
@@ -99,9 +101,18 @@ extension MainViewController: SpeechCoreDelegate {
     }
     
     func speechCoreRecognizedText(_ recognizedText: String) {
-        OperationQueue.main.addOperation() {
-            self.resultTextView.text = recognizedText
+        if recognitionEngine.textWasRecognized(recognizedText) {
+            weatherProvider.getWeather(city: "Berlin") { (weather, error) in
+                let weatherDescriptions: WeatherDescriptions = weather!.weather[0]
+                let resultToShow = "The weather in \(weather!.name) is \(weatherDescriptions.main), with a temperature of \(weather!.main.temp)"
+
+                OperationQueue.main.addOperation() {
+                    self.resultTextView.text = resultToShow
+                    self.stopRecording()
+                }
+            }
         }
+
     }
     
 }

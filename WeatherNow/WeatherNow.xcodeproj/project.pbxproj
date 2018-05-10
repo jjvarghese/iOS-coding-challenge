@@ -14,6 +14,11 @@
 		A4E2612320A4AAD9008B6AD2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2612120A4AAD9008B6AD2 /* MainViewController.swift */; };
 		A4E2612420A4AAD9008B6AD2 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4E2612220A4AAD9008B6AD2 /* MainViewController.xib */; };
 		A4E2612720A4B507008B6AD2 /* SpeechCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2612620A4B507008B6AD2 /* SpeechCore.swift */; };
+		A4E2612920A4C764008B6AD2 /* WeatherProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2612820A4C764008B6AD2 /* WeatherProvider.swift */; };
+		A4E2612B20A4C7E0008B6AD2 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2612A20A4C7E0008B6AD2 /* Weather.swift */; };
+		A4E2612E20A4C84C008B6AD2 /* WeatherDescriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2612D20A4C84C008B6AD2 /* WeatherDescriptions.swift */; };
+		A4E2613020A4C86D008B6AD2 /* WeatherNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2612F20A4C86D008B6AD2 /* WeatherNumbers.swift */; };
+		A4E2613220A4CB99008B6AD2 /* RecognitionEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2613120A4CB99008B6AD2 /* RecognitionEngine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,11 @@
 		A4E2612120A4AAD9008B6AD2 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		A4E2612220A4AAD9008B6AD2 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		A4E2612620A4B507008B6AD2 /* SpeechCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechCore.swift; sourceTree = "<group>"; };
+		A4E2612820A4C764008B6AD2 /* WeatherProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherProvider.swift; sourceTree = "<group>"; };
+		A4E2612A20A4C7E0008B6AD2 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		A4E2612D20A4C84C008B6AD2 /* WeatherDescriptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDescriptions.swift; sourceTree = "<group>"; };
+		A4E2612F20A4C86D008B6AD2 /* WeatherNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherNumbers.swift; sourceTree = "<group>"; };
+		A4E2613120A4CB99008B6AD2 /* RecognitionEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognitionEngine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +72,7 @@
 				A4E2611920A4AA1E008B6AD2 /* Info.plist */,
 				A4E2612520A4B4DD008B6AD2 /* Helpers */,
 				A4E2611F20A4AA70008B6AD2 /* Controllers */,
+				A4E2612C20A4C7E3008B6AD2 /* Models */,
 				A4E2612020A4AA90008B6AD2 /* Resources */,
 			);
 			path = WeatherNow;
@@ -89,9 +100,21 @@
 		A4E2612520A4B4DD008B6AD2 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				A4E2613120A4CB99008B6AD2 /* RecognitionEngine.swift */,
 				A4E2612620A4B507008B6AD2 /* SpeechCore.swift */,
+				A4E2612820A4C764008B6AD2 /* WeatherProvider.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		A4E2612C20A4C7E3008B6AD2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A4E2612A20A4C7E0008B6AD2 /* Weather.swift */,
+				A4E2612D20A4C84C008B6AD2 /* WeatherDescriptions.swift */,
+				A4E2612F20A4C86D008B6AD2 /* WeatherNumbers.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,8 +189,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4E2610E20A4AA1D008B6AD2 /* AppDelegate.swift in Sources */,
+				A4E2613220A4CB99008B6AD2 /* RecognitionEngine.swift in Sources */,
+				A4E2612E20A4C84C008B6AD2 /* WeatherDescriptions.swift in Sources */,
 				A4E2612720A4B507008B6AD2 /* SpeechCore.swift in Sources */,
 				A4E2612320A4AAD9008B6AD2 /* MainViewController.swift in Sources */,
+				A4E2612920A4C764008B6AD2 /* WeatherProvider.swift in Sources */,
+				A4E2612B20A4C7E0008B6AD2 /* Weather.swift in Sources */,
+				A4E2613020A4C86D008B6AD2 /* WeatherNumbers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

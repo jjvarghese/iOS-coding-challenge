@@ -45,5 +45,20 @@
 	<string>WeatherNow needs access to your microphone in order for you to ask it about the weather.</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>WeatherNow needs permission to analyse your speech in order for it to answer your weather questions.</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>api.openweathermap.org</key>
+			<dict>
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
+		</dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>
