@@ -13,16 +13,15 @@ class WeatherProvider {
         let dataTask = session.dataTask(with: weatherRequestURL) {
             (data: Data?, response: URLResponse?, error: Error?) in
             if let error = error {
-                print("Error:\n\(error)")
+                print(error)
+                completionHandler(nil, error)
             } else {
                 let decoder = JSONDecoder()
                 do {
                     let weatherInfo = try decoder.decode(Weather.self, from: data!)
                     completionHandler(weatherInfo, nil)
                 } catch {
-                    print("error trying to convert data to JSON")
-                    print(error)
-                    completionHandler(nil, error)
+                    completionHandler(nil, nil)
                 }
             }
         }

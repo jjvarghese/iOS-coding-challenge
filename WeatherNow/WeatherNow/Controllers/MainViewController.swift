@@ -135,6 +135,18 @@ extension MainViewController: SpeechCoreDelegate {
         }
         
         weatherProvider.getWeather(city: recognizedCity) { (weather, error) in
+            guard error == nil else {
+                guard let errorDescription = error?.localizedDescription else {
+                    self.showError(with: "An unknown error occurred. Please try again later.")
+                    self.stopRecording()
+                    return
+                }
+                
+                self.showError(with: errorDescription)
+                self.stopRecording()
+                return
+            }
+            
             guard let parsedWeather = weather else {
                 OperationQueue.main.addOperation() {
                     self.subtitleLabel.text = self.defaultSubtitleText
