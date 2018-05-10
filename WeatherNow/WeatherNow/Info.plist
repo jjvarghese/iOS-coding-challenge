@@ -41,5 +41,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>WeatherNow needs access to your microphone in order for you to ask it about the weather.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>WeatherNow needs permission to analyse your speech in order for it to answer your weather questions.</string>
 </dict>
 </plist>
