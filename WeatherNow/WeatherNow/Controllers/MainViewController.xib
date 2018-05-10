@@ -13,6 +13,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="WeatherNow" customModuleProvider="target">
             <connections>
+                <outlet property="recordButton" destination="0eF-Wr-ChV" id="BPM-Uj-45Q"/>
+                <outlet property="resultTextView" destination="P2j-fk-Cca" id="4V3-26-1d4"/>
+                <outlet property="subtitleLabel" destination="n47-Vr-o9E" id="Ooc-fy-ypu"/>
+                <outlet property="titleLabel" destination="5bZ-cu-PvG" id="zWr-bc-1A5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -56,6 +60,9 @@
                         <constraint firstAttribute="height" constant="100" id="cUf-E0-C5b"/>
                     </constraints>
                     <state key="normal" title="RECORD"/>
+                    <connections>
+                        <action selector="recordPressed:" destination="-1" eventType="touchUpInside" id="qBZ-fW-zZw"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
