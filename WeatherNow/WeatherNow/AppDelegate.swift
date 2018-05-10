@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  WeatherNow
-//
-//  Created by sys0p on 10/5/18.
-//
-
 import UIKit
 
 @UIApplicationMain
@@ -12,9 +5,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    // MARK: - AppDelegate -
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        configureStartup()
+        
         return true
     }
 
@@ -40,6 +36,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    // MARK: - Configuration -
 
+    func configureStartup() {
+        let vc = MainViewController()
+        
+        window?.rootViewController = vc
+        window?.makeKeyAndVisible()
+    }
 }
 
