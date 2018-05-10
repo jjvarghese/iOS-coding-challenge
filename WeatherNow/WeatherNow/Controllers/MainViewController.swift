@@ -53,6 +53,7 @@ class MainViewController: UIViewController {
     private func configureSpeech() {
         speechCore.delegate = self
         speechCore.requestSpeechAuthorisation()
+        speechCore.requestMicrophoneAuthorisation()
     }
     
     // MARK: - Recording -
@@ -70,14 +71,16 @@ class MainViewController: UIViewController {
     }
     
     private func styleSubviewsAsRecording(_ recording: Bool) {
-        colorViewsForRecordingState(recording)
-        
-        if recording {
-            recordButton .setTitle("STOP", for: UIControlState.normal)
-            resultTextView.text = ""
-            subtitleLabel.text = defaultSubtitleText
-        } else {
-            recordButton .setTitle("ASK", for: UIControlState.normal)
+        OperationQueue.main.addOperation() {
+            self.colorViewsForRecordingState(recording)
+            
+            if recording {
+                self.recordButton .setTitle("STOP", for: UIControlState.normal)
+                self.resultTextView.text = ""
+                self.subtitleLabel.text = self.defaultSubtitleText
+            } else {
+                self.recordButton .setTitle("ASK", for: UIControlState.normal)
+            }
         }
     }
     
@@ -92,10 +95,31 @@ class MainViewController: UIViewController {
     // MARK: - Actions -
     
     @IBAction func recordPressed(_ sender: Any) {
+        guard speechCore.hasSpeechPermission() == true else {
+             showError(with: "WeatherNow does not have permission to analyse your speech. Please check your device settings and enable permission in order to record.")
+            return
+        }
+        
+        guard speechCore.hasMicrophonePermission() == true else {
+             showError(with: "WeatherNow does not have permission to access your microphone. Please check your device settings and enable permission in order to record.")
+            return
+        }
+        
         if speechCore.audioEngine.isRunning {
             stopRecording()
         } else {
             startRecording()
+        }
+    }
+    
+    // MARK: - Helper -
+    
+    func showError(with message: String) {
+        OperationQueue.main.addOperation() {
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler:nil))
+            
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
@@ -104,12 +128,6 @@ class MainViewController: UIViewController {
 // MARK: - SpeechCoreDelegate -
 
 extension MainViewController: SpeechCoreDelegate {
-    
-    func speechCoreGotAuthorisationInformation(_ wasAuthorised: Bool) {
-        OperationQueue.main.addOperation() {
-            self.recordButton.isEnabled = wasAuthorised
-        }
-    }
     
     func speechCoreRecognizedText(_ recognizedText: String) {
         guard let recognizedCity = recognitionEngine.cityWasRecognized(recognizedText) else {

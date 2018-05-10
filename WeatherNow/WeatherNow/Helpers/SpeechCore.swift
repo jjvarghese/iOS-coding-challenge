@@ -28,28 +28,34 @@ class SpeechCore {
     }
     
     func requestSpeechAuthorisation() {
-        SFSpeechRecognizer.requestAuthorization { (authStatus) in
-            
-            var wasAuthorised = false
-            
-            switch authStatus {
-            case .authorized:
-                wasAuthorised = true
-                
-            case .denied:
-                wasAuthorised = false
-                print("User denied access to speech recognition")
-                
-            case .restricted:
-                wasAuthorised = false
-                print("Speech recognition restricted on this device")
-                
-            case .notDetermined:
-                wasAuthorised = false
-                print("Speech recognition not yet authorized")
-            }
-            
-            self.delegate?.speechCoreGotAuthorisationInformation(wasAuthorised)
+        SFSpeechRecognizer.requestAuthorization { (authStatus) in }
+    }
+    
+    func requestMicrophoneAuthorisation() {
+        AVAudioSession.sharedInstance().requestRecordPermission { (authStatus) in }
+    }
+    
+    func hasSpeechPermission() -> Bool {
+        switch SFSpeechRecognizer.authorizationStatus() {
+        case .authorized:
+            return true
+        case .denied:
+            return false
+        case .restricted:
+            return false
+        case .notDetermined:
+            return false
+        }
+    }
+    
+    func hasMicrophonePermission() -> Bool {
+        switch AVAudioSession.sharedInstance().recordPermission() {
+        case AVAudioSessionRecordPermission.granted:
+            return true
+        case AVAudioSessionRecordPermission.denied:
+            return false
+        case AVAudioSessionRecordPermission.undetermined:
+            return false
         }
     }
     
@@ -117,6 +123,5 @@ class SpeechCore {
 // MARK: - SpeechCoreDelegate -
 
 protocol SpeechCoreDelegate: class {
-    func speechCoreGotAuthorisationInformation(_ wasAuthorised: Bool)
     func speechCoreRecognizedText(_ recognizedText: String)
 }
