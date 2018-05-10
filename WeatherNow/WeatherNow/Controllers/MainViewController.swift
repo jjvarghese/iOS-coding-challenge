@@ -101,15 +101,17 @@ extension MainViewController: SpeechCoreDelegate {
     }
     
     func speechCoreRecognizedText(_ recognizedText: String) {
-        if recognitionEngine.textWasRecognized(recognizedText) {
-            weatherProvider.getWeather(city: "Berlin") { (weather, error) in
-                let weatherDescriptions: WeatherDescriptions = weather!.weather[0]
-                let resultToShow = "The weather in \(weather!.name) is \(weatherDescriptions.main), with a temperature of \(weather!.main.temp)"
-
-                OperationQueue.main.addOperation() {
-                    self.resultTextView.text = resultToShow
-                    self.stopRecording()
-                }
+        guard let recognizedCity = recognitionEngine.cityWasRecognized(recognizedText) else {
+            return
+        }
+        
+        weatherProvider.getWeather(city: recognizedCity) { (weather, error) in
+            let weatherDescriptions: WeatherDescriptions = weather!.weather[0]
+            let resultToShow = "The weather in \(weather!.name) is \(weatherDescriptions.main), with a temperature of \(weather!.main.temp)"
+            
+            OperationQueue.main.addOperation() {
+                self.resultTextView.text = resultToShow
+                self.stopRecording()
             }
         }
 
