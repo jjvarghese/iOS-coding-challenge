@@ -13,6 +13,7 @@
 		A4E2611820A4AA1E008B6AD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4E2611620A4AA1E008B6AD2 /* LaunchScreen.storyboard */; };
 		A4E2612320A4AAD9008B6AD2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2612120A4AAD9008B6AD2 /* MainViewController.swift */; };
 		A4E2612420A4AAD9008B6AD2 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4E2612220A4AAD9008B6AD2 /* MainViewController.xib */; };
+		A4E2612720A4B507008B6AD2 /* SpeechCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E2612620A4B507008B6AD2 /* SpeechCore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		A4E2611920A4AA1E008B6AD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4E2612120A4AAD9008B6AD2 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		A4E2612220A4AAD9008B6AD2 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		A4E2612620A4B507008B6AD2 /* SpeechCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechCore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				A4E2610D20A4AA1D008B6AD2 /* AppDelegate.swift */,
 				A4E2611920A4AA1E008B6AD2 /* Info.plist */,
+				A4E2612520A4B4DD008B6AD2 /* Helpers */,
 				A4E2611F20A4AA70008B6AD2 /* Controllers */,
 				A4E2612020A4AA90008B6AD2 /* Resources */,
 			);
@@ -81,6 +84,14 @@
 				A4E2611620A4AA1E008B6AD2 /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		A4E2612520A4B4DD008B6AD2 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A4E2612620A4B507008B6AD2 /* SpeechCore.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4E2610E20A4AA1D008B6AD2 /* AppDelegate.swift in Sources */,
+				A4E2612720A4B507008B6AD2 /* SpeechCore.swift in Sources */,
 				A4E2612320A4AAD9008B6AD2 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
