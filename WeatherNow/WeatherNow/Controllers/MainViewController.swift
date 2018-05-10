@@ -25,7 +25,7 @@ class MainViewController: UIViewController {
     // MARK: - Configuration -
     
     private func configureBackground() {
-        view.backgroundColor = UIColor.lightText
+        view.backgroundColor = UIColor.white
     }
     
     private func configureSubviews() {
@@ -69,12 +69,22 @@ class MainViewController: UIViewController {
     }
     
     private func styleSubviewsAsRecording(_ recording: Bool) {
+        colorViewsForRecordingState(recording)
+        
         if recording {
-            view.backgroundColor = UIColor.red
             recordButton .setTitle("STOP", for: UIControlState.normal)
+            resultTextView.text = ""
+            subtitleLabel.text = "i.e. \"How is the weather in Berlin?\""
         } else {
-            view.backgroundColor = UIColor.lightText
-            recordButton .setTitle("RECORD", for: UIControlState.normal)
+            recordButton .setTitle("ASK", for: UIControlState.normal)
+        }
+    }
+    
+    private func colorViewsForRecordingState(_ recording: Bool) {
+        UIView.animate(withDuration: 0.2) {
+            self.view.backgroundColor = recording ? UIColor.red : UIColor.white
+            self.recordButton.backgroundColor = recording ? UIColor.white : UIColor.red
+            self.recordButton .setTitleColor(recording ? UIColor.red : UIColor.white, for: UIControlState.normal)
         }
     }
 
@@ -107,9 +117,14 @@ extension MainViewController: SpeechCoreDelegate {
         
         weatherProvider.getWeather(city: recognizedCity) { (weather, error) in
             let weatherDescriptions: WeatherDescriptions = weather!.weather[0]
-            let resultToShow = "The weather in \(weather!.name) is \(weatherDescriptions.main), with a temperature of \(weather!.main.temp)"
+            let temperatureInCelsius = weather!.main.temp - 273.15
+            let formattedTemperature = String(format: "%.1f", temperatureInCelsius)
+            let lowercaseSummary = weatherDescriptions.main.lowercased()
+            
+            let resultToShow = "The weather in \(weather!.name) today is \(lowercaseSummary) (\(weatherDescriptions.description)), with a temperature of \(formattedTemperature) degrees celsius."
             
             OperationQueue.main.addOperation() {
+                self.subtitleLabel.text = "The weather in \(weather!.name):"
                 self.resultTextView.text = resultToShow
                 self.stopRecording()
             }
