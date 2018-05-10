@@ -22,7 +22,12 @@ struct RecognitionEngine {
         for word: String in words {
             if word.compare("in") == ComparisonResult.orderedSame {
                 if words.count > (i + 1) {
-                    return words[i + 1]
+                    var city = ""
+                    for index in (i + 1)...(words.count - 1) {
+                        city = "\(city)+\(words[index])"
+                    }
+                    
+                    return city
                 }
             }
             
