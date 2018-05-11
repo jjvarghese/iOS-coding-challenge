@@ -12,11 +12,6 @@ class WeatherNowUITests: XCTestCase {
         continueAfterFailure = false
         
         app = XCUIApplication()
-        app.launchArguments.append("--uitesting")
-    }
-    
-    override func tearDown() {
-        super.tearDown()
     }
     
     // MARK: - Tests -
