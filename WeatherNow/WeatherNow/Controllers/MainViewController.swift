@@ -21,6 +21,11 @@ class MainViewController: UIViewController {
         configureBackground()
         configureSubviews()
         configureSpeech()
+        configureAccessibilityLabels()
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
     
     // MARK: - Configuration -
@@ -54,6 +59,13 @@ class MainViewController: UIViewController {
         speechCore.delegate = self
         speechCore.requestSpeechAuthorisation()
         speechCore.requestMicrophoneAuthorisation()
+    }
+    
+    private func configureAccessibilityLabels() {
+        view.accessibilityIdentifier = "view"
+        titleLabel.accessibilityIdentifier = "titleLabel"
+        subtitleLabel.accessibilityIdentifier = "subtitleLabel"
+        recordButton.accessibilityIdentifier = "recordButton"
     }
     
     // MARK: - Recording -

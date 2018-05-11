@@ -12,11 +12,6 @@ class SpeechCore {
     // MARK: - Public -
     
     func prepareToStartRecording() {
-        if task != nil {
-            task?.cancel()
-            task = nil
-        }
-        
         prepareToStopRecording()
 
         setupAudioSession()
@@ -25,6 +20,11 @@ class SpeechCore {
     }
     
     func prepareToStopRecording() {
+        if task != nil {
+            task?.cancel()
+            task = nil
+        }
+        
         audioEngine.stop()
         request?.endAudio()
     }
