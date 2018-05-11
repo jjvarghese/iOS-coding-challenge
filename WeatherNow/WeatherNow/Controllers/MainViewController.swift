@@ -142,7 +142,7 @@ class MainViewController: UIViewController {
 extension MainViewController: SpeechCoreDelegate {
     
     func speechCoreRecognizedText(_ recognizedText: String) {
-        guard let recognizedCity = recognitionEngine.cityWasRecognized(recognizedText) else {
+        guard let recognizedCity = recognitionEngine.recognizeCityFromText(recognizedText) else {
             return
         }
         

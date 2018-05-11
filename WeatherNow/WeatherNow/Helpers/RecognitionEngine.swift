@@ -4,7 +4,7 @@ struct RecognitionEngine {
     
     // MARK: - Public -
     
-    func cityWasRecognized(_ textToCheck: String) -> String? {
+    func recognizeCityFromText(_ textToCheck: String) -> String? {
         guard let recognizedCity = extractCityFromWords(textToCheck) else {
             return nil
         }
