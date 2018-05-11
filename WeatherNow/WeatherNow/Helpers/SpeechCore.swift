@@ -125,15 +125,21 @@ class SpeechCore {
     // MARK: - Error Handling -
     
     private func handleAudioEngineCouldNotStartError() {
-        print("Audio Engine couldn't start. Ideally show an error to the user at this point - will add if time permits!")
+        let errorText = "Audio Engine could not start. Please try again later."
+        delegate?.speechCoreEncounteredAnError(errorText)
+        prepareToStopRecording()
     }
     
     private func handleRecognitionRequestCouldNotBeMadeError() {
-        fatalError("Request couldn't be made. Ideally show an error if time!")
+        let errorText = "The recognition request could not be made. Please try again later."
+        delegate?.speechCoreEncounteredAnError(errorText)
+        prepareToStopRecording()
     }
     
     private func handleAudioSessionCouldNotSetPropertiesError() {
-        print("Couldn't set audiosession properly. Show error if time!")
+        let errorText = "Could not correctly setup the audio session. Please try again later."
+        delegate?.speechCoreEncounteredAnError(errorText)
+        prepareToStopRecording()
     }
 }
 
@@ -141,4 +147,5 @@ class SpeechCore {
 
 protocol SpeechCoreDelegate: class {
     func speechCoreRecognizedText(_ recognizedText: String)
+    func speechCoreEncounteredAnError(_ errorText: String)
 }

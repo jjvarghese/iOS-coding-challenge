@@ -126,7 +126,7 @@ class MainViewController: UIViewController {
     
     // MARK: - Helper -
     
-    func showError(with message: String) {
+    private func showError(with message: String) {
         OperationQueue.main.addOperation() {
             let alert = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler:nil))
@@ -183,6 +183,10 @@ extension MainViewController: SpeechCoreDelegate {
             }
         }
 
+    }
+    
+    func speechCoreEncounteredAnError(_ errorText: String) {
+        showError(with: errorText)
     }
     
 }
