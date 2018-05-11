@@ -17,6 +17,8 @@ class SpeechCore {
             task = nil
         }
         
+        prepareToStopRecording()
+
         setupAudioSession()
         setupAudioRequest()
         startAudioEngine()
@@ -68,7 +70,7 @@ class SpeechCore {
             try audioSession.setMode(AVAudioSessionModeMeasurement)
             try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
         } catch {
-            print("Couldn't set audiosession properly. Show error if time!")
+            handleAudioSessionCouldNotSetPropertiesError()
         }
     }
     
@@ -76,7 +78,8 @@ class SpeechCore {
         request = SFSpeechAudioBufferRecognitionRequest()
         
         guard let recognitionRequest = request else {
-            fatalError("Request couldn't be made. Ideally show an error if time!")
+            handleRecognitionRequestCouldNotBeMadeError()
+            return
         }
         
         recognitionRequest.shouldReportPartialResults = true
@@ -115,8 +118,22 @@ class SpeechCore {
         do {
             try audioEngine.start()
         } catch {
-            print("Audio Engine couldn't start. Ideally show an error to the user at this point - will add if time permits!")
+            handleAudioEngineCouldNotStartError()
         }
+    }
+    
+    // MARK: - Error Handling -
+    
+    private func handleAudioEngineCouldNotStartError() {
+        print("Audio Engine couldn't start. Ideally show an error to the user at this point - will add if time permits!")
+    }
+    
+    private func handleRecognitionRequestCouldNotBeMadeError() {
+        fatalError("Request couldn't be made. Ideally show an error if time!")
+    }
+    
+    private func handleAudioSessionCouldNotSetPropertiesError() {
+        print("Couldn't set audiosession properly. Show error if time!")
     }
 }
 
